@@ -151,10 +151,24 @@ void showCustomSnackbar({
   final Function? onBtnTap,
   final Function? onCloseTap,
 }) {
+  bool isMobile = MediaQuery.of(context).size.width < 850;
+  bool isTablet = MediaQuery.of(context).size.width < 1100 ||
+      MediaQuery.of(context).size.width >= 850;
+  bool isDesktop = MediaQuery.of(context).size.width >= 1100;
+
+  double snackBarWidth;
+  if (isDesktop) {
+    snackBarWidth = MediaQuery.of(context).size.width / 2;
+  } else if (isTablet) {
+    snackBarWidth = MediaQuery.of(context).size.width / 2;
+  } else {
+    snackBarWidth = MediaQuery.of(context).size.width;
+  }
   final snackBar = SnackBar(
     elevation: 0,
     behavior: SnackBarBehavior.floating,
     backgroundColor: Colors.transparent,
+    width: snackBarWidth,
     content: ToastMsgWidget(
       btnLabel: "",
       message: message,
