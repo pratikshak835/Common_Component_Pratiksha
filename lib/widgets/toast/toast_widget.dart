@@ -160,7 +160,6 @@ void showCustomSnackbar({
       message: message,
       onCloseTap: null,
       onBtnTap: null,
-      height: 64,
       color: backgroundColor,
       margin: const EdgeInsets.only(right: 800),
     ),
