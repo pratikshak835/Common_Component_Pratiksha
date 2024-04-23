@@ -12,7 +12,6 @@ class ToastMsgWidget extends StatelessWidget {
   String? actionLabel;
   final Color color;
   final EdgeInsets? margin;
-  final double? height;
 
   ToastMsgWidget({
     Key? key,
@@ -21,7 +20,6 @@ class ToastMsgWidget extends StatelessWidget {
     this.onCloseTap,
     this.onBtnTap,
     this.color = AppColors.errorColor,
-    this.height = 90.0,
     this.margin,
   }) : super(key: key);
 
@@ -34,7 +32,6 @@ class ToastMsgWidget extends StatelessWidget {
     required this.onActionTap,
     this.actionLabel,
     this.color = AppColors.errorColor,
-    this.height,
     this.margin,
   }) : super(key: key);
 
@@ -44,7 +41,6 @@ class ToastMsgWidget extends StatelessWidget {
       borderRadius: BorderRadius.circular(24.0),
       child: Container(
         margin: margin,
-        height: height,
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(24.0),
