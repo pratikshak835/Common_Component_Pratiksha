@@ -103,6 +103,7 @@ class CustomUnderlineTextFieldWithLabel extends StatelessWidget {
           splashColor: Colors.transparent,
           highlightColor: Colors.transparent,
           hoverColor: Colors.transparent,
+          fontFamily: Theme.of(context).textTheme.bodyMedium?.fontFamily,
         ),
         child: TextFormField(
           autofocus: autoFocus,

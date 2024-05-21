@@ -26,6 +26,7 @@ class CustomText extends StatelessWidget {
   final FontStyle? fontStyle;
   final double? letterSpacing;
   final bool isRilFont;
+  final String? fontFamily;
 
   const CustomText({
     Key? key,
@@ -39,6 +40,7 @@ class CustomText extends StatelessWidget {
     this.overflow = TextOverflow.ellipsis,
     this.fontStyle,
     this.letterSpacing,
+    this.fontFamily,
     this.isRilFont = false,
   }) : super(key: key);
 
@@ -54,6 +56,7 @@ class CustomText extends StatelessWidget {
       this.lineHeightToFontSizeRatio = 1,
       this.letterSpacing = -0.3,
       this.isRilFont = false,
+      this.fontFamily,
       this.fontStyle});
 
   const CustomText.headingL(
@@ -68,6 +71,7 @@ class CustomText extends StatelessWidget {
       this.lineHeightToFontSizeRatio = 1,
       this.letterSpacing = -0.3,
       this.isRilFont = false,
+      this.fontFamily,
       this.fontStyle});
 
   const CustomText.headingM(
@@ -82,6 +86,7 @@ class CustomText extends StatelessWidget {
       this.lineHeightToFontSizeRatio = 1,
       this.letterSpacing = -0.3,
       this.isRilFont = false,
+      this.fontFamily,
       this.fontStyle});
 
   const CustomText.headingS(
@@ -96,6 +101,7 @@ class CustomText extends StatelessWidget {
       this.lineHeightToFontSizeRatio = 1,
       this.letterSpacing = -0.3,
       this.isRilFont = false,
+      this.fontFamily,
       this.fontStyle});
 
   const CustomText.headingXS(
@@ -110,6 +116,7 @@ class CustomText extends StatelessWidget {
       this.lineHeightToFontSizeRatio = 1,
       this.letterSpacing = -0.3,
       this.isRilFont = false,
+      this.fontFamily,
       this.fontStyle});
 
   const CustomText.bodyL(
@@ -124,6 +131,7 @@ class CustomText extends StatelessWidget {
       this.lineHeightToFontSizeRatio = 24 / 32,
       this.letterSpacing = -0.5,
       this.isRilFont = false,
+      this.fontFamily,
       this.fontStyle});
 
   const CustomText.bodyLBold(
@@ -138,6 +146,7 @@ class CustomText extends StatelessWidget {
       this.lineHeightToFontSizeRatio = 24 / 32,
       this.letterSpacing = -0.5,
       this.isRilFont = false,
+      this.fontFamily,
       this.fontStyle});
 
   const CustomText.bodyS(
@@ -152,6 +161,7 @@ class CustomText extends StatelessWidget {
       this.lineHeightToFontSizeRatio = 1,
       this.letterSpacing = -0.5,
       this.isRilFont = false,
+      this.fontFamily,
       this.fontStyle});
 
   @override
@@ -167,8 +177,11 @@ class CustomText extends StatelessWidget {
           fontSize: size,
           fontStyle: fontStyle,
           letterSpacing: letterSpacing,
-          fontFamily: isRilFont ? getFontFamily(fontWeight) : null,
-          package: Constants.packageName,
+          fontFamily: isRilFont
+              ? getFontFamily(fontWeight)
+              : fontFamily ??
+                  Theme.of(context).textTheme.bodyMedium?.fontFamily,
+          package: isRilFont ? Constants.packageName : null,
           fontWeight: getFontWeight(fontWeight),
           decoration: TextDecoration.none),
     );
