@@ -5,6 +5,8 @@ class Validators {
 
   static final RegExp validDecimal = RegExp(r'^[-+]?\d*\.?\d{0,2}');
   static final RegExp validNumber = RegExp(r'^[-+]?\d*');
+  static final RegExp validEmail =
+      RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
 
   static String? validateEmpty(String? v) {
     if (v == null || v.isEmpty || (v.trim().isEmpty)) {
@@ -68,5 +70,15 @@ class Validators {
       }
     }
     return null;
+  }
+
+  static String? validateEmail(String? email) {
+    if (email == null || email.isEmpty) {
+      return "This field ${Constants.cantBeEmpty}";
+    } else if (!validEmail.hasMatch(email)) {
+      return "Please enter a valid email address";
+    } else {
+      return null;
+    }
   }
 }
