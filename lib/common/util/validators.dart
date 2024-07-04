@@ -81,4 +81,28 @@ class Validators {
       return null;
     }
   }
+
+  static String? validatePhone(String? v) {
+    if (v!.isEmpty) {
+      return Constants.fieldCantBeEmpty;
+    } else if (!validNumber.hasMatch(v) || (!(v.length == 10))) {
+      return Constants.enterValidNumber;
+    } else {
+      return null;
+    }
+  }
+
+  String? validateWithRegex(
+      String? input, String pattern, String errorMessage) {
+    if (input == null || input.isEmpty) {
+      return Constants.fieldCantBeEmpty;
+    }
+
+    RegExp regex = RegExp(pattern);
+    if (!regex.hasMatch(input)) {
+      return errorMessage;
+    }
+
+    return null;
+  }
 }
