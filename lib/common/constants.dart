@@ -6,4 +6,5 @@ class Constants {
   static const String cantBeEmpty = "can not be blank.";
   static const String fieldCantBeEmpty = 'Field $cantBeEmpty';
   static const String checkboxLabel = "CheckBox";
+  static const String enterValidNumber = "Enter Valid Number";
 }
