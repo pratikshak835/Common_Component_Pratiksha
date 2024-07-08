@@ -7,4 +7,6 @@ class Constants {
   static const String fieldCantBeEmpty = 'Field $cantBeEmpty';
   static const String checkboxLabel = "CheckBox";
   static const String enterValidNumber = "Enter Valid Number";
+  static const String specialCharactersNotAllowed =
+      'Special character not allowed.';
 }

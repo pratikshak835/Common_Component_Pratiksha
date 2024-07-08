@@ -105,4 +105,15 @@ class Validators {
 
     return null;
   }
+
+  static String? validateSpecialChar(String? value) {
+    String? emptyValidation = Validators.validateEmpty(value);
+    if (emptyValidation != null) {
+      return emptyValidation;
+    }
+    if (value!.contains(RegExp(r'[^\w. ]'))) {
+      return Constants.specialCharactersNotAllowed;
+    }
+    return null;
+  }
 }
