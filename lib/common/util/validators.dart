@@ -92,7 +92,7 @@ class Validators {
     }
   }
 
-  String? validateWithRegex(
+  static String? validateWithRegex(
       String? input, String pattern, String errorMessage) {
     if (input == null || input.isEmpty) {
       return Constants.fieldCantBeEmpty;
