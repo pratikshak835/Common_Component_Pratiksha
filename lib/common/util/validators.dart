@@ -116,4 +116,49 @@ class Validators {
     }
     return null;
   }
+
+  static String? validateCheckbox({
+    bool v = false,
+    String error = Constants.checkboxValidation,
+  }) {
+    if (!v) {
+      return error;
+    } else {
+      return null;
+    }
+  }
+
+  static String? validatePasswordPolicy(String? v) {
+    final RegExp validPassword = RegExp(
+        r"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*()<>{}[\]]).{8,}$");
+    if (v!.isEmpty) {
+      return "${Constants.password} ${Constants.cantBeEmpty}";
+    } else if (!(validPassword.hasMatch(v))) {
+      return Constants.passwordPolicyError;
+    } else {
+      return null;
+    }
+  }
+
+  static String? validateNewPassword(String? v, String password) {
+    final RegExp validPassword = RegExp(
+        r"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*()<>{}[\]]).{8,}$");
+    if (v!.isEmpty) {
+      return "${Constants.password} ${Constants.cantBeEmpty}";
+    } else if (!(validPassword.hasMatch(v))) {
+      return Constants.passwordPolicyError;
+    } else if (v.compareTo(password) == 0) {
+      return Constants.newPasswordValidation;
+    } else {
+      return null;
+    }
+  }
+
+  static String? validateConfirmPassword(String? v, String password) {
+    if (v!.compareTo(password) != 0) {
+      return Constants.confirmPasswordValidation;
+    } else {
+      return null;
+    }
+  }
 }
