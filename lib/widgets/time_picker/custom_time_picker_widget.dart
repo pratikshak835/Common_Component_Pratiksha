@@ -327,7 +327,7 @@ class _HourMinuteControl extends StatelessWidget {
               : themeData.colorScheme.onSurface.withOpacity(0.12);
         });
     final TextStyle style =
-        timePickerTheme.hourMinuteTextStyle ?? themeData.textTheme.headline2!;
+        timePickerTheme.hourMinuteTextStyle ?? themeData.textTheme.titleMedium!;
     final ShapeBorder shape = timePickerTheme.hourMinuteShape ?? _kDefaultShape;
 
     final Set<MaterialState> states = isSelected
@@ -454,7 +454,7 @@ class _StringFragment extends StatelessWidget {
     final ThemeData theme = Theme.of(context);
     final TimePickerThemeData timePickerTheme = TimePickerTheme.of(context);
     final TextStyle hourMinuteStyle =
-        timePickerTheme.hourMinuteTextStyle ?? theme.textTheme.headline2!;
+        timePickerTheme.hourMinuteTextStyle ?? theme.textTheme.titleMedium!;
     final Color textColor =
         timePickerTheme.hourMinuteTextColor ?? theme.colorScheme.onSurface;
 
@@ -617,7 +617,7 @@ class _DayPeriodControl extends StatelessWidget {
         ? <MaterialState>{MaterialState.selected}
         : <MaterialState>{};
     final TextStyle textStyle = timePickerTheme.dayPeriodTextStyle ??
-        Theme.of(context).textTheme.subtitle1!;
+        Theme.of(context).textTheme.titleMedium!;
     final TextStyle amStyle = textStyle.copyWith(
       color: MaterialStateProperty.resolveAs(textColor, amStates),
     );
@@ -1254,7 +1254,7 @@ class _DialState extends State<_Dial> with SingleTickerProviderStateMixin {
 
   _TappableLabel _buildTappableLabel(TextTheme textTheme, Color color,
       int value, String label, VoidCallback onTap) {
-    final TextStyle style = textTheme.bodyText1!.copyWith(color: color);
+    final TextStyle style = textTheme.bodyLarge!.copyWith(color: color);
     final double labelScaleFactor =
         math.min(MediaQuery.of(context).textScaleFactor, 2.0);
     return _TappableLabel(
@@ -1559,9 +1559,8 @@ class _TimePickerInputState extends State<_TimePickerInput>
         .timeOfDayFormat(alwaysUse24HourFormat: media.alwaysUse24HourFormat);
     final bool use24HourDials = hourFormat(of: timeOfDayFormat) != HourFormat.h;
     final ThemeData theme = Theme.of(context);
-    final TextStyle hourMinuteStyle =
-        TimePickerTheme.of(context).hourMinuteTextStyle ??
-            theme.textTheme.headline2!;
+    final TextStyle? hourMinuteStyle =
+        TimePickerTheme.of(context).hourMinuteTextStyle ?? theme.textTheme.titleMedium;
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),
@@ -1602,7 +1601,7 @@ class _TimePickerInputState extends State<_TimePickerInput>
                           _HourTextField(
                             restorationId: 'hour_text_field',
                             selectedTime: _selectedTime.value,
-                            style: hourMinuteStyle,
+                            style: hourMinuteStyle!,
                             autofocus: widget.autofocusHour,
                             validator: _validateHour,
                             onSavedSubmitted: _handleHourSavedSubmitted,
@@ -1683,7 +1682,7 @@ class _TimePickerInputState extends State<_TimePickerInput>
             Text(
               widget.errorInvalidText ??
                   MaterialLocalizations.of(context).invalidTimeLabel,
-              style: theme.textTheme.bodyText2!
+              style: theme.textTheme.titleMedium!
                   .copyWith(color: theme.colorScheme.error),
             )
           else
