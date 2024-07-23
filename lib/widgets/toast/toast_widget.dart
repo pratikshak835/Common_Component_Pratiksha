@@ -51,7 +51,7 @@ class ToastMsgWidget extends StatelessWidget {
       child: Container(
         height: height,
         margin: margin,
-        padding: const EdgeInsets.only(top: 16, bottom: 16),
+        padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(24.0), color: backgroundColor),
         child: Column(
