@@ -12,6 +12,9 @@ class ToastMsgWidget extends StatelessWidget {
   String? actionLabel;
   final Color color;
   final EdgeInsets? margin;
+  final Color backgroundColor;
+  final double? height;
+  final double? fontSize;
 
   ToastMsgWidget({
     Key? key,
@@ -21,6 +24,9 @@ class ToastMsgWidget extends StatelessWidget {
     this.onBtnTap,
     this.color = AppColors.errorColor,
     this.margin,
+    this.backgroundColor = AppColors.A6000000,
+    this.height,
+    this.fontSize,
   }) : super(key: key);
 
   ToastMsgWidget.action({
@@ -33,6 +39,9 @@ class ToastMsgWidget extends StatelessWidget {
     this.actionLabel,
     this.color = AppColors.errorColor,
     this.margin,
+    this.backgroundColor = AppColors.A6000000,
+    this.height,
+    this.fontSize,
   }) : super(key: key);
 
   @override
@@ -40,11 +49,11 @@ class ToastMsgWidget extends StatelessWidget {
     return Material(
       borderRadius: BorderRadius.circular(24.0),
       child: Container(
+        height: height,
         margin: margin,
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(24.0),
-            color: AppColors.A6000000),
+            borderRadius: BorderRadius.circular(24.0), color: backgroundColor),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -85,6 +94,7 @@ class ToastMsgWidget extends StatelessWidget {
                     text: message,
                     color: AppColors.white,
                     fontWeight: CustomFontWeight.bold,
+                    size: fontSize,
                   ),
                 ),
                 CustomInkwell(
